@@ -1,0 +1,1 @@
+{"isbn":"123456789","judul":"Ini Buku","ketersediaan":2,"penerbit":"ini penerbit","penulis":"ini penulis","tahun":"1995"}
