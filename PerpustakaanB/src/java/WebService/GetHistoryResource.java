@@ -5,6 +5,7 @@
  */
 package WebService;
 
+import Model.Buku;
 import Model.Pinjam;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -51,6 +52,7 @@ public class GetHistoryResource {
             objectPinjam[i].add("isbn", pinjam[i].getISBN_Buku());
             objectPinjam[i].add("ket", pinjam[i].getKet());
             objectPinjam[i].add("status", pinjam[i].getStatus());
+            objectPinjam[i].add("judul", Buku.infoBuku(pinjam[i].getISBN_Buku()).getJudul());
             arrayPinjam.add(objectPinjam[i]);
         }
 

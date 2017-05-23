@@ -373,6 +373,46 @@ public class Buku {
         }
         return bk;
     }
+    
+    public static Buku infoBuku(String ISBN) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        conn = DatabaseManager.getDBConnection();
+        Buku bk = new Buku();
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT COUNT (*) TOTAL FROM BUKU "
+                    + "WHERE ("
+                    + "ISBN='" + ISBN + "')");
+            rs.next();
+            rs = st.executeQuery("SELECT * FROM BUKU "
+                    + "WHERE ("
+                    + "ISBN='" + ISBN + "')");
+            int index = 0;
+            while (rs.next()) {
+                bk.setISBN(rs.getString(1));
+                bk.setJudul(rs.getString(2));
+                bk.setPenulis(rs.getString(3));
+                bk.setPenerbit(rs.getString(4));
+                bk.setTahun_Terbit(rs.getString(5));
+                bk.setCopy(rs.getInt(6));
+                index++;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                rs.close();
+                st.close();
+                conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return bk;
+    }
+    
 
     public static boolean cekBuku(String key) {
         Connection conn = null;

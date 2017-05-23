@@ -33,7 +33,7 @@ public class KembaliResource {
         //deklarasi hasil
         String hasil = null;
         //panggil buku
-        Buku b = Buku.getBuku(isbn);
+        Buku b = Buku.infoBuku(isbn);
         //deklarasi kelas dan timeStamp
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
         //deklarasi pinjam
